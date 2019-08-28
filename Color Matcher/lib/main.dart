@@ -25,16 +25,16 @@ class ShapeWidget extends StatefulWidget {
 }
 
 class _ShapeWidgetState extends State<ShapeWidget> {
-  var containerOneColor = Colors.grey;
+  var containerOneColor = Colors.red;
   var containerTwoColor = Colors.cyan;
   var container3Color = Colors.orange;
-  var container4Color = Colors.white;
+  var container4Color = Colors.yellow;
   var container5Color = Colors.purple;
   var container6Color = Colors.indigo;
   var container7Color = Colors.brown;
   List colorList = [
-    Colors.yellow,
-    Colors.teal,
+    Colors.purple,
+    Colors.amber,
     Colors.pink,
     Colors.black,
     Colors.red,
@@ -42,11 +42,13 @@ class _ShapeWidgetState extends State<ShapeWidget> {
   ];
   var random = new Random();
   var assignColor;
+  var tapButton = true;
   int seconds = 10;
 
-  updateTimer() {
+  updateTimer(bool tapButton) {
     Timer.periodic(Duration(seconds: 1), (Timer timer) {
       setState(() {
+        tapButton = false;
         seconds = seconds - 1;
         if (seconds < 0) {
           timer.cancel();
@@ -54,6 +56,7 @@ class _ShapeWidgetState extends State<ShapeWidget> {
           alertBox();
           resetColors();
           initState();
+          tapButton = true;
         }
       });
     });
@@ -69,15 +72,14 @@ class _ShapeWidgetState extends State<ShapeWidget> {
   }
 
   resetColors() {
-    containerOneColor = Colors.grey;
+    containerOneColor = Colors.red;
     containerTwoColor = Colors.cyan;
     container3Color = Colors.orange;
-    container4Color = Colors.white;
+    container4Color = Colors.yellow;
     container5Color = Colors.purple;
     container6Color = Colors.indigo;
     container7Color = Colors.brown;
   }
-
 
   @override
   void initState() {
@@ -112,125 +114,126 @@ class _ShapeWidgetState extends State<ShapeWidget> {
 
   Row rowThree() {
     return Row(
-        children: <Widget>[
-          Expanded(
-              child: GestureDetector(
-            onTap: () {
-              setState(() {
-                container5Color = colorList[random.nextInt(colorList.length)];
-              });
-            },
-            child: Container(
-              height: 100.0,
-              width: 100.0,
-              color: container5Color,
-            ),
-          )),
-          Expanded(
-              child: GestureDetector(
-            onTap: () {
-              setState(() {
-                container6Color = colorList[random.nextInt(colorList.length)];
-              });
-            },
-            child: Container(
-              height: 100.0,
-              width: 100.0,
-              color: container6Color,
-            ),
-          )),
-          Expanded(
-              child: GestureDetector(
-            onTap: () {
-              setState(() {
-                container7Color = colorList[random.nextInt(colorList.length)];
-              });
-            },
-            child: Container(
-              height: 100.0,
-              width: 100.0,
-              color: container7Color,
-            ),
-          )),
-        ],
-      );
+      children: <Widget>[
+        Expanded(
+            child: GestureDetector(
+          onTap: () {
+            setState(() {
+              container5Color = colorList[random.nextInt(colorList.length)];
+            });
+          },
+          child: Container(
+            height: 100.0,
+            width: 100.0,
+            color: container5Color,
+          ),
+        )),
+        Expanded(
+            child: GestureDetector(
+          onTap: () {
+            setState(() {
+              container6Color = colorList[random.nextInt(colorList.length)];
+            });
+          },
+          child: Container(
+            height: 100.0,
+            width: 100.0,
+            color: container6Color,
+          ),
+        )),
+        Expanded(
+            child: GestureDetector(
+          onTap: () {
+            setState(() {
+              container7Color = colorList[random.nextInt(colorList.length)];
+            });
+          },
+          child: Container(
+            height: 100.0,
+            width: 100.0,
+            color: container7Color,
+          ),
+        )),
+      ],
+    );
   }
 
   Row rowOne() {
     return Row(
-        children: <Widget>[
-          Expanded(
-              child: GestureDetector(
-            onTap: () {
-              setState(() {
-                containerOneColor =
-                    colorList[random.nextInt(colorList.length)];
-              });
-            },
-            child: Container(
-              height: 100.0,
-              width: 100.0,
-              color: containerOneColor,
-            ),
-          )),
-          Expanded(
-              child: GestureDetector(
-            onTap: () {
-              setState(() {
-                containerTwoColor =
-                    colorList[random.nextInt(colorList.length)];
-              });
-            },
-            child: Container(
-              height: 100.0,
-              width: 100.0,
-              color: containerTwoColor,
-            ),
-          )),
-          Expanded(
-              child: GestureDetector(
-            onTap: () {
-              setState(() {
-                container3Color = colorList[random.nextInt(colorList.length)];
-              });
-            },
-            child: Container(
-              height: 100.0,
-              width: 100.0,
-              color: container3Color,
-            ),
-          )),
-        ],
-      );
+      children: <Widget>[
+        Expanded(
+            child: GestureDetector(
+          onTap: () {
+            setState(() {
+              containerOneColor = colorList[random.nextInt(colorList.length)];
+            });
+          },
+          child: Container(
+            height: 100.0,
+            width: 100.0,
+            color: containerOneColor,
+          ),
+        )),
+        Expanded(
+            child: GestureDetector(
+          onTap: () {
+            setState(() {
+              containerTwoColor = colorList[random.nextInt(colorList.length)];
+            });
+          },
+          child: Container(
+            height: 100.0,
+            width: 100.0,
+            color: containerTwoColor,
+          ),
+        )),
+        Expanded(
+            child: GestureDetector(
+          onTap: () {
+            setState(() {
+              container3Color = colorList[random.nextInt(colorList.length)];
+            });
+          },
+          child: Container(
+            height: 100.0,
+            width: 100.0,
+            color: container3Color,
+          ),
+        )),
+      ],
+    );
   }
 
   Row headerRow() {
     return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          Container(
-            child: Text("Time Left: $seconds"),
-          ),
-          GestureDetector(
-            onTap: () {
-              updateTimer();
-            },
-            child: Container(
-              margin: EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                  color: Colors.black, shape: BoxShape.circle),
-              height: 40.0,
-              width: 40.0,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        Container(
+          child: Text("Time Left: $seconds"),
+        ),
+        GestureDetector(
+          onTap: tapButton ? () {
+            updateTimer(tapButton);
+          } : null,
+          child: Container(
+            child: Image.asset(
+              'assets/images/play-16.png',
+              fit: BoxFit.scaleDown,
             ),
+            margin: EdgeInsets.all(10.0),
+            decoration:
+                BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+            height: 40.0,
+            width: 40.0,
           ),
-          Container(
-            decoration: BoxDecoration(
-                color: assignColor,
-                shape: BoxShape.rectangle),
-            height: 40,
-            width: 40,
-          ),
-        ],
-      );
+        ),
+        Container(
+          decoration:
+              BoxDecoration(color: assignColor, shape: BoxShape.rectangle),
+          height: 30,
+          width: 30,
+        ),
+      ],
+    );
   }
 }
