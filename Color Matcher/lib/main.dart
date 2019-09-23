@@ -9,7 +9,7 @@ main() {
     debugShowCheckedModeBanner: false,
     home: Scaffold(
       appBar: AppBar(
-        title: Text("Color Coding"),
+        title: Text("Color Matching"),
       ),
       body: ShapeWidget(),
     ),
@@ -43,7 +43,7 @@ class _ShapeWidgetState extends State<ShapeWidget> {
   var random = new Random();
   var assignColor;
   var tapButton = true;
-  int seconds = 10;
+  int seconds = 20;
 
   updateTimer(bool tapButton) {
     Timer.periodic(Duration(seconds: 1), (Timer timer) {
@@ -52,7 +52,7 @@ class _ShapeWidgetState extends State<ShapeWidget> {
         seconds = seconds - 1;
         if (seconds < 0) {
           timer.cancel();
-          seconds = 10;
+          seconds = 20;
           alertBox();
           resetColors();
           initState();

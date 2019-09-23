@@ -1,4 +1,4 @@
-# Color Matcher Game
+# week_one_app
 
 A new Flutter application.
 
